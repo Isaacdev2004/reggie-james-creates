@@ -65,7 +65,7 @@ const Navigation = () => {
           </div>
 
           <Button 
-            onClick={() => scrollToSection('contact')}
+            onClick={() => window.open('https://www.fiverr.com/reggie_dev', '_blank')}
             className="bg-primary hover:bg-primary/90"
           >
             Hire Me
