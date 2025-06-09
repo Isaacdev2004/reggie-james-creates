@@ -1,41 +1,37 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Link, Code } from 'lucide-react';
+import { Link } from 'lucide-react';
 
 const Projects = () => {
   const projects = [
     {
-      title: "E-Commerce Platform",
-      description: "A full-stack e-commerce solution built with NextJS, Node.js, and MongoDB. Features include user authentication, payment processing, and admin dashboard.",
-      tech: ["NextJS", "NodeJS", "MongoDB", "Stripe"],
-      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      liveUrl: "#",
-      codeUrl: "#"
+      title: "Healthcare Website",
+      description: "A comprehensive healthcare platform providing medical services and patient care solutions with modern design and user-friendly interface.",
+      tech: ["ReactJS", "NextJS", "TailwindCSS", "Healthcare"],
+      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      liveUrl: "https://jaxpremierhealth.com"
     },
     {
-      title: "Task Management App",
-      description: "A collaborative task management application with real-time updates, built using React, Firebase, and Tailwind CSS.",
-      tech: ["ReactJS", "Firebase", "TailwindCSS", "Real-time"],
-      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      liveUrl: "#",
-      codeUrl: "#"
+      title: "Feet Content Selling",
+      description: "An innovative platform for specialized content selling with secure payment processing and user management features.",
+      tech: ["ReactJS", "NodeJS", "Payment Integration", "E-commerce"],
+      image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      liveUrl: "https://magnificentsoles.com"
+    },
+    {
+      title: "Ecommerce Platform",
+      description: "A full-featured e-commerce solution with product management, shopping cart, payment processing, and order management system.",
+      tech: ["ReactJS", "NodeJS", "MongoDB", "Stripe"],
+      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      liveUrl: "https://jymcoglobal.com"
     },
     {
       title: "Mobile Fitness App",
-      description: "Cross-platform mobile app for fitness tracking and workout planning, developed with Flutter and integrated with health APIs.",
-      tech: ["Flutter", "Kotlin", "Health APIs", "SQLite"],
-      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      liveUrl: "#",
-      codeUrl: "#"
-    },
-    {
-      title: "Analytics Dashboard",
-      description: "Real-time analytics dashboard for business intelligence, featuring interactive charts and data visualization components.",
-      tech: ["ReactJS", "Python", "FastAPI", "Charts.js"],
-      image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      liveUrl: "#",
-      codeUrl: "#"
+      description: "A comprehensive fitness application offering workout plans, progress tracking, and health monitoring features for mobile users.",
+      tech: ["Flutter", "Mobile Development", "Health APIs", "SQLite"],
+      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      liveUrl: "https://kla.co.za/"
     }
   ];
 
@@ -52,36 +48,42 @@ const Projects = () => {
         <div className="grid md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
             <Card key={project.title} className="glass-effect hover:bg-white/10 transition-all duration-300 overflow-hidden animate-fade-up" style={{ animationDelay: `${index * 0.1}s` }}>
-              <div className="aspect-video overflow-hidden">
-                <img 
-                  src={project.image} 
-                  alt={project.title}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
+              <div className="flex flex-col md:flex-row">
+                <div className="md:w-1/2">
+                  <div className="aspect-video overflow-hidden">
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                </div>
+                <div className="md:w-1/2 flex flex-col">
+                  <CardHeader className="flex-1">
+                    <CardTitle>{project.title}</CardTitle>
+                    <CardDescription>{project.description}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.tech.map((tech) => (
+                        <span key={tech} className="text-xs bg-primary/20 text-primary px-2 py-1 rounded-full">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="flex gap-3">
+                      <Button 
+                        variant="outline" 
+                        size="sm"
+                        onClick={() => window.open(project.liveUrl, '_blank')}
+                      >
+                        <Link className="w-4 h-4 mr-2" />
+                        Live Demo
+                      </Button>
+                    </div>
+                  </CardContent>
+                </div>
               </div>
-              <CardHeader>
-                <CardTitle>{project.title}</CardTitle>
-                <CardDescription>{project.description}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tech.map((tech) => (
-                    <span key={tech} className="text-xs bg-primary/20 text-primary px-2 py-1 rounded-full">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                <div className="flex gap-3">
-                  <Button variant="outline" size="sm">
-                    <Link className="w-4 h-4 mr-2" />
-                    Live Demo
-                  </Button>
-                  <Button variant="outline" size="sm">
-                    <Code className="w-4 h-4 mr-2" />
-                    View Code
-                  </Button>
-                </div>
-              </CardContent>
             </Card>
           ))}
         </div>
