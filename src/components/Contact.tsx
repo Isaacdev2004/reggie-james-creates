@@ -4,9 +4,10 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Mail, Phone, User } from 'lucide-react';
+import { Mail, Phone, User, AlertCircle } from 'lucide-react';
 import { useState } from 'react';
 import { toast } from '@/hooks/use-toast';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -18,10 +19,19 @@ const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Simulate form submission
+    // Show info about needing Supabase for email functionality
     toast({
-      title: "Message Sent!",
-      description: "Thank you for reaching out. I'll get back to you soon!",
+      title: "Form Submitted!",
+      description: "To send emails, please connect to Supabase for backend functionality. For now, the form data is logged to console.",
+    });
+    
+    // Log form data to console for now
+    console.log('Contact form submission:', {
+      name: formData.name,
+      email: formData.email,
+      message: formData.message,
+      timestamp: new Date().toISOString(),
+      sendTo: 'reggiejames2003@outlook.com'
     });
     
     setFormData({ name: '', email: '', message: '' });
@@ -85,59 +95,68 @@ const Contact = () => {
             </div>
           </div>
 
-          <Card className="glass-effect">
-            <CardHeader>
-              <CardTitle>Send Me a Message</CardTitle>
-              <CardDescription>
-                Fill out the form below and I'll get back to you as soon as possible.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="space-y-2">
-                  <Label htmlFor="name">Name</Label>
-                  <Input 
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Your full name"
-                    required
-                  />
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input 
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="your.email@example.com"
-                    required
-                  />
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea 
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Tell me about your project..."
-                    rows={5}
-                    required
-                  />
-                </div>
-                
-                <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
-                  Send Message
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
+          <div className="space-y-6">
+            <Alert>
+              <AlertCircle className="h-4 w-4" />
+              <AlertDescription>
+                To enable email sending functionality, connect this project to Supabase using the green button in the top right corner.
+              </AlertDescription>
+            </Alert>
+            
+            <Card className="glass-effect">
+              <CardHeader>
+                <CardTitle>Send Me a Message</CardTitle>
+                <CardDescription>
+                  Fill out the form below and I'll get back to you as soon as possible.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="space-y-2">
+                    <Label htmlFor="name">Name</Label>
+                    <Input 
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="Your full name"
+                      required
+                    />
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="email">Email</Label>
+                    <Input 
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="your.email@example.com"
+                      required
+                    />
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="message">Message</Label>
+                    <Textarea 
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      placeholder="Tell me about your project..."
+                      rows={5}
+                      required
+                    />
+                  </div>
+                  
+                  <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
+                    Send Message
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </div>
     </section>

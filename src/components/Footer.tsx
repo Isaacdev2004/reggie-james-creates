@@ -9,14 +9,13 @@ const Footer = () => {
           </div>
           
           <div className="flex space-x-6">
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-              LinkedIn
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-              GitHub
-            </a>
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-              Twitter
+            <a 
+              href="https://www.fiverr.com/reggie_dev" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
+              Fiverr
             </a>
           </div>
         </div>
