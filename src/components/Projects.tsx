@@ -32,6 +32,27 @@ const Projects = () => {
       tech: ["Flutter", "Mobile Development", "Health APIs", "SQLite"],
       image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       liveUrl: "https://kla.co.za/"
+    },
+    {
+      title: "Healthcare-Agency Connector",
+      description: "A platform that seamlessly connects healthcare professionals with staffing agencies, streamlining the recruitment process for medical facilities.",
+      tech: ["ReactJS", "NodeJS", "Healthcare", "Database"],
+      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      liveUrl: "https://shiftllink-care-connect.vercel.app"
+    },
+    {
+      title: "DropDeli",
+      description: "A modern delivery platform providing efficient logistics solutions for businesses and customers with real-time tracking and management.",
+      tech: ["ReactJS", "Laravel", "MySQL", "Logistics"],
+      image: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      liveUrl: "#"
+    },
+    {
+      title: "MenuFlixer",
+      description: "An innovative restaurant menu management system that helps restaurants create, manage, and optimize their digital menus for better customer experience.",
+      tech: ["ReactJS", "PHP", "MySQL", "Restaurant Tech"],
+      image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      liveUrl: "https://menuflixer.com"
     }
   ];
 
@@ -42,6 +63,9 @@ const Projects = () => {
           <h2 className="text-4xl font-bold mb-4">Featured Projects</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             A showcase of my recent work and contributions
+          </p>
+          <p className="text-sm text-muted-foreground mt-2">
+            *These are just a few of my projects
           </p>
         </div>
 
@@ -76,9 +100,10 @@ const Projects = () => {
                         variant="outline" 
                         size="sm"
                         onClick={() => window.open(project.liveUrl, '_blank')}
+                        disabled={project.liveUrl === "#"}
                       >
                         <Link className="w-4 h-4 mr-2" />
-                        Live Demo
+                        {project.liveUrl === "#" ? "Coming Soon" : "Live Demo"}
                       </Button>
                     </div>
                   </CardContent>
